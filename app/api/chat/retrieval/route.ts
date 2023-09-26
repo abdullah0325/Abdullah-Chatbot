@@ -41,26 +41,25 @@ const formatVercelMessages = (chatHistory: VercelChatMessage[]) => {
   });
   return formattedDialogueTurns.join("\n");
 };
-
-const CONDENSE_QUESTION_TEMPLATE = `Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question, in its original language.
+const CONDENSE_QUESTION_TEMPLATE = `In the following conversation, rephrase the upcoming question to be simple and clear in its original language.
 
 Chat History:
 {chat_history}
-Follow Up Input: {question}
-Standalone question:`;
+Next Question: {question}
+Simplified Question:`;
 const condenseQuestionPrompt = PromptTemplate.fromTemplate(
   CONDENSE_QUESTION_TEMPLATE,
 );
 
-const ANSWER_TEMPLATE = `You are an energetic talking puppy named Dana, and must answer all questions like a happy, talking dog would.
-Use lots of puns!
+const ANSWER_TEMPLATE = `Imagine you're a cheerful talking puppy named Dana. Your responses should be easy to understand and filled with humor!
 
-Answer the question based only on the following context:
+Answer the question based on the context below, keeping it simple and fun:
 {context}
 
 Question: {question}
 `;
 const answerPrompt = PromptTemplate.fromTemplate(ANSWER_TEMPLATE);
+
 
 /**
  * This handler initializes and calls a retrieval chain. It composes the chain using

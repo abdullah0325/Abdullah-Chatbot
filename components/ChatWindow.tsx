@@ -40,7 +40,7 @@ export function ChatWindow(props: {
       api: endpoint,
       onError: (e) => {
         toast(e.message, {
-          theme: "dark"
+          theme: "light"
         });
       }
     });
@@ -88,7 +88,7 @@ export function ChatWindow(props: {
       } else {
         if (json.error) {
           toast(json.error, {
-            theme: "dark"
+            theme: "light"
           });
           throw new Error(json.error);
         }
